@@ -37,13 +37,13 @@ class login {
     }
 
     createAccount() {
-        cy.get(this.selectorsList().newAccountBotton).click()        
+        cy.get(this.selectorsList().newAccountBotton).click()
     }
 
     loginFail() {
         cy.get(this.selectorsList().loginFailAlert).should('be.visible')
     }
-    
+
 
 }
 

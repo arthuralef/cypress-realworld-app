@@ -18,7 +18,7 @@ class createAccount {
     checkpage() {
         cy.location('pathname').should('equal', '/signup')
         cy.get(this.selectorsList().dashboardGrid).should('be.visible')
-    }    
+    }
 
     createNewAccount(firstname, lastname, username, password, confirmPassword) {
         cy.get(this.selectorsList().firstNameField).type(firstname)

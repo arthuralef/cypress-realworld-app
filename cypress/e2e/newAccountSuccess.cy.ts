@@ -5,19 +5,19 @@ const loginPage = new login()
 const createAccountPage = new createAccount()
 
 describe('Registro de novo usuário com sucesso', () => {
-    it('Deve registrar um novo usuário com informações válidas', () => {
-      
-      loginPage.checkpage()
+  it('Deve registrar um novo usuário com informações válidas', () => {
 
-      loginPage.checkLoginArea()
+    loginPage.checkpage()
 
-      loginPage.createAccount()
+    loginPage.checkLoginArea()
 
-      createAccountPage.checkpage()
-  
-      createAccountPage.createNewAccount('Arthur', 'Alef', 'LumeStack', 'test123', 'test123')
+    loginPage.createAccount()
 
-      loginPage.checkLoginArea()
+    createAccountPage.checkpage()
 
-    });
+    createAccountPage.createNewAccount('Arthur', 'Alef', 'LumeStack', 'test123', 'test123')
+
+    loginPage.checkLoginArea()
+
   });
+});

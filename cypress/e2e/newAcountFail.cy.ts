@@ -6,19 +6,19 @@ const createAccountPage = new createAccount()
 
 
 describe('Tentar registrar um novo usuário com informações incompletas', () => {
-    it('Deve exibir mensagens de erro ao tentar registrar um novo usuário sem preencher todas as informações obrigatórias', () => {
-      
-      loginPage.checkpage()
+  it('Deve exibir mensagens de erro ao tentar registrar um novo usuário sem preencher todas as informações obrigatórias', () => {
 
-      loginPage.checkLoginArea()
+    loginPage.checkpage()
 
-      loginPage.createAccount()
+    loginPage.checkLoginArea()
 
-      createAccountPage.checkpage()
-  
-      createAccountPage.createNewAccountFail('Arthur', 'Alef', 'LumeStack', 'test123', 'test321')
+    loginPage.createAccount()
 
-      createAccountPage.passwordRequired()
+    createAccountPage.checkpage()
 
-    });
+    createAccountPage.createNewAccountFail('Arthur', 'Alef', 'LumeStack', 'test123', 'test321')
+
+    createAccountPage.passwordRequired()
+
   });
+});
