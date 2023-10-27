@@ -10,13 +10,13 @@ class home {
       homepage: ".MuiToolbar-root",
       saveBotton: "[type='submit']",
       doneBotton: "[data-test='user-onboarding-next']",
-      transactionNewBotton: "[href='/transaction/new']",
       searchField: "[name='q']",
       userList: "[data-test='users-list']",
       amountField: "[name='amount']",
       description: "[placeholder='Add a note']",
       payBotton: "[data-test='transaction-create-submit-payment']",
-      alerteBarSuccess: "[data-test='alert-bar-success']"
+      alerteBarSuccess: "[data-test='alert-bar-success']",
+      transactionHistoryField: ".MuiGrid-grid-xs-12",
 
     }
 
@@ -47,7 +47,6 @@ class home {
   }
 
   withMoneySearch(userSearch) {
-    cy.get(this.selectorsList().transactionNewBotton).eq(0).click()
     cy.get(this.selectorsList().searchField).type(userSearch, { force: true })
     cy.get(this.selectorsList().userList).eq(0).click()
   }
@@ -59,6 +58,17 @@ class home {
     cy.get(this.selectorsList().alerteBarSuccess).should('be.visible')
   }
 
+  cashlessPayment(cashValue, addANote) {
+    cy.get(this.selectorsList().amountField).type(cashValue)
+    cy.get(this.selectorsList().description).type(addANote)
+    cy.get(this.selectorsList().payBotton).click()
+    cy.get(this.selectorsList().alerteBarSuccess).should('be.visible')
+    cy.log('payment made without balance - error found')
+  }
+
+  transactionHistory() {
+    cy.get(this.selectorsList().transactionHistoryField).eq(2).click({force: true})
+  }
 }
 
 export default home

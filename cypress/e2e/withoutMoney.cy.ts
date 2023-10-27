@@ -1,8 +1,10 @@
 import login from "../pages/loginpage"
 import home from "../pages/homePage"
+import topBarMenu from "../pages/topBarMenuPage";
 
 const loginPage = new login()
 const homePage = new home()
+const topBarMenuPage = new topBarMenu()
 
 
 describe('Enviar dinheiro com saldo insuficiente', () => {
@@ -13,8 +15,12 @@ describe('Enviar dinheiro com saldo insuficiente', () => {
 
         //homePage.createBankAccount('NuBank', '123456789', '123456789')
 
+        homePage.checkLoginArea()
+
+        topBarMenuPage.transactionNew()
+
         homePage.withMoneySearch("Devon Becker")
 
-        homePage.withMoneyPayment("100.00", "shopping")
+        homePage.cashlessPayment("100.00", "shopping")
     });
 });
