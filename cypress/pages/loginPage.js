@@ -2,12 +2,11 @@ class login {
 
     selectorsList() {
         const selectors = {
-            usernameField: "[name='username']",
-            passawordField: "[name='password']",
-            checkBox: "[name='password']",
-            signInBotton: "[type='submit']",
-            newAccountBotton: "[href='/signup']",
-            loginFailAlert: "[role='alert']",
+            usernameField: "[data-test='signin-username']",
+            passawordField: "[data-test='signin-password']",
+            signInButton: "[data-test='signin-submit']",
+            newAccountButton: "[data-test='signup']",
+            loginFailAlert: "[data-test='signin-error']",
 
         }
 
@@ -19,25 +18,23 @@ class login {
     }
 
     checkLoginArea() {
-        cy.get(this.selectorsList().signInBotton).should('be.visible')
+        cy.get(this.selectorsList().signInButton).should('be.visible')
     }
 
     loginWithAnyUser(username, password) {
         cy.get(this.selectorsList().usernameField).type(username)
         cy.get(this.selectorsList().passawordField).type(password)
-        cy.get(this.selectorsList().checkBox).click()
-        cy.get(this.selectorsList().signInBotton).click()
+        cy.get(this.selectorsList().signInButton).click()
     }
 
     loginWithAnyUserFail(username, password) {
         cy.get(this.selectorsList().usernameField).type(username)
         cy.get(this.selectorsList().passawordField).type(password)
-        cy.get(this.selectorsList().checkBox).click()
-        cy.get(this.selectorsList().signInBotton).click()
+        cy.get(this.selectorsList().signInButton).click()
     }
 
     createAccount() {
-        cy.get(this.selectorsList().newAccountBotton).click()
+        cy.get(this.selectorsList().newAccountButton).click()
     }
 
     loginFail() {

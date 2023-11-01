@@ -2,48 +2,24 @@ class home {
 
   selectorsList() {
     const selectors = {
-      dialogPaper: ".MuiDialog-paper",
-      nextBotton: ".MuiButton-textPrimary",
-      bankNameField: "[name='bankName']",
-      routingNameField: "[name='routingNumber']",
-      accountNumberField: "[name='accountNumber']",
-      homepage: ".MuiToolbar-root",
-      saveBotton: "[type='submit']",
-      doneBotton: "[data-test='user-onboarding-next']",
-      searchField: "[name='q']",
+      homepage: "[data-test='sidenav']",
+      searchField: "[data-test='user-list-search-input']",
       userList: "[data-test='users-list']",
-      amountField: "[name='amount']",
-      description: "[placeholder='Add a note']",
-      payBotton: "[data-test='transaction-create-submit-payment']",
+      amountField: "[data-test='transaction-create-amount-input']",
+      description: "[data-test='transaction-create-description-input']",
+      payButton: "[data-test='transaction-create-submit-payment']",
       alerteBarSuccess: "[data-test='alert-bar-success']",
-      transactionHistoryField: ".MuiGrid-grid-xs-12",
-
+      everyoneField: "[data-test='nav-public-tab']",
+      friendsField: "[data-test='nav-contacts-tab']",
+      mineField: "[data-test='nav-personal-tab']",
+      createATransactionField: "[data-test='transaction-list-empty-create-transaction-button']",
     }
 
     return selectors
   }
 
-  checkLoginArea() {
+  checkUserArea() {
     cy.get(this.selectorsList().homepage).should('be.visible')
-  }
-
-
-  createBankAccount(bankName, routingName, accountNumber) {
-    cy.get(this.selectorsList().dialogPaper).then(($element) => {
-      if ($element.is(this.selectorsList().dialogPaper)) {
-        cy.get(this.selectorsList().nextBotton).click()
-        cy.get(this.selectorsList().bankNameField).type(bankName)
-        cy.get(this.selectorsList().routingNameField).type(routingName)
-        cy.get(this.selectorsList().accountNumberField).type(accountNumber)
-        cy.get(this.selectorsList().saveBotton).click()
-        cy.get(this.selectorsList().doneBotton).click()
-      }
-
-      else {
-        cy.get('body').should('be.visible')
-      }
-    });
-
   }
 
   withMoneySearch(userSearch) {
@@ -54,20 +30,20 @@ class home {
   withMoneyPayment(cashValue, addANote) {
     cy.get(this.selectorsList().amountField).type(cashValue)
     cy.get(this.selectorsList().description).type(addANote)
-    cy.get(this.selectorsList().payBotton).click()
+    cy.get(this.selectorsList().payButton).click()
     cy.get(this.selectorsList().alerteBarSuccess).should('be.visible')
   }
 
   cashlessPayment(cashValue, addANote) {
     cy.get(this.selectorsList().amountField).type(cashValue)
     cy.get(this.selectorsList().description).type(addANote)
-    cy.get(this.selectorsList().payBotton).click()
+    cy.get(this.selectorsList().payButton).click()
     cy.get(this.selectorsList().alerteBarSuccess).should('be.visible')
     cy.log('payment made without balance - error found')
   }
 
-  transactionHistory() {
-    cy.get(this.selectorsList().transactionHistoryField).eq(2).click({force: true})
+  createATransaction() {
+    cy.get(this.selectorsList().createATransactionField).click()
   }
 }
 

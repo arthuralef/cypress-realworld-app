@@ -1,0 +1,26 @@
+{
+  "userSuccess": {
+    "firstname": "Arthur",
+    "lastname": "Alef",
+    "username": "LumeStack",
+    "password": "test123",
+    "confirmPassword": "test123"
+  },
+  "userFail": {
+    "firstname": "Luis",
+    "lastname": "Costa",
+    "username": "Torradeira",
+    "password": "teste123",
+    "confirmPassword": "teste321"
+  },
+  "userBank": {
+    "bankName": "NuBank",
+    "routingName": "123456789",
+    "accountNumber": "987654321"
+  },
+  "userTransaction": {
+    "userSearch": "Devon Becker",
+    "userValue": "100.00",
+    "userAmount": "Shopping"
+  }
+}
